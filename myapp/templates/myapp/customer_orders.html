@@ -3,7 +3,7 @@
 {% block title %}{{ customer.name }}'s orders{% endblock %}
 
 {% block content %}
-    <h2> все продукты пользователя: {{ customer.name }} </h2>
+    <h2> Все продукты пользователя: {{ customer.name }} </h2>
     {% for product in products %}
                 <p>{{ product }}</p>
     {% endfor %}
