@@ -4,8 +4,8 @@
 
 {% block content %}
     <h2> Все продукты пользователя: {{ customer.name }} </h2>
-    {% for product in products %}
-                <p>{{ product }}</p>
+    {% for i in products %}
+                <li>{{ i }}</li>
     {% endfor %}
 {% endblock %}
 

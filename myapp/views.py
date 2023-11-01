@@ -16,13 +16,13 @@ def customer_orders(request, customer_id, is_Present=None):
     # seven_day_before = today - timedelta(days=7)
     # present_employees_all = is_Present.objects.filter(date__gte=seven_day_before, is_present=True)
     products = []
-
     customer = get_object_or_404(Сustomer, pk=customer_id)
     orders = Order.objects.filter(customer=customer).all()
     for order in orders:
         products.append(order.products.all())
     products.reverse()
-    print(products)
+    # for x in range(len(products)):
+    #     print(products[x])
     return render(request, 'myapp/customer_orders.html', {'customer': customer, 'orders': orders, 'products': products})
 
 # today = date.today()
