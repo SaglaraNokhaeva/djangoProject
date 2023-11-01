@@ -18,7 +18,7 @@ def customer_orders(request, customer_id, is_Present=None):
 
     customer = get_object_or_404(Сustomer, pk=customer_id)
     orders = Order.objects.filter(customer=customer).order_by('-id')
-    return render(request, 'myapp/customer_orders.html', {'customer': customer})
+    return render(request, 'myapp/customer_orders.html', {'customer': customer, 'orders': orders})
 
 # today = date.today()
 # seven_day_before = today - timedelta(days=7)
