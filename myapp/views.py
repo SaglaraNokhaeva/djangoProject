@@ -1,3 +1,5 @@
+from datetime import date, timedelta
+
 from django.shortcuts import render, get_object_or_404
 from .models import Сustomer, Product, Order
 
@@ -7,10 +9,19 @@ from .models import Сustomer, Product, Order
 # — за последние 30 дней (месяц)
 # — за последние 365 дней (год)
 # Товары в списке не должны повторятся.
-def customer_orders(request, customer_id):
+def customer_orders(request, customer_id, is_Present=None):
+    today = date.today()
+    seven_day_before = today - timedelta(days=7)
+    # present_employees_all = is_Present.objects.filter(date__gte=seven_day_before, is_present=True)
+    # seven_day_before = today - timedelta(days=7)
+    # present_employees_all = is_Present.objects.filter(date__gte=seven_day_before, is_present=True)
+
     customer = get_object_or_404(Сustomer, pk = customer_id)
-    posts = Post.objects.filter(author=author).order_by('-id')[:5]
-    return render(request, 'myapp3/author_posts.html', {'author':
-    author, 'posts': posts})
+    orders = Order.objects.filter(customer=customer, date__gte=seven_day_before, is_present=True).order_by('-id')
+    return render(request, 'myapp/customer_orders.html', {'customer': customer, 'orders': orders})
+
+# today = date.today()
+# seven_day_before = today - timedelta(days=7)
+# present_employees_all = is_Present.objects.filter(date__gte=seven_day_before, is_present=True)
 
 # Create your views here.
