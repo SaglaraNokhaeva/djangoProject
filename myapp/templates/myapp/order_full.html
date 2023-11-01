@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ order.id }}{% endblock %}
+
+{% block content %}
+    <h3>{{ order.products }}</h3>
+    <p>{{ order.date }}</p>
+{% endblock %}

@@ -27,5 +27,5 @@ def customer_orders(request, customer_id, is_Present=None):
 
 def order_full(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
-    return render(request, 'myapp3/post_full.html', {'order': order})
+    return render(request, 'myapp/order_full.html', {'order': order})
 # Create your views here.
