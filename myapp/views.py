@@ -2,7 +2,7 @@ from datetime import date, timedelta
 
 from django.shortcuts import render, get_object_or_404
 from .models import Сustomer, Product, Order
-
+# НЕ ВЫВОДИТ ТОВАРЫ!!!
 # Продолжаем работать с товарами и заказами.
 # Создайте шаблон, который выводит список заказанных клиентом товаров из всех его заказов с сортировкой по времени:
 # — за последние 7 дней (неделю)
