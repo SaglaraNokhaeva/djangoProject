@@ -1,7 +1,10 @@
 from datetime import date, timedelta
+import logging
 
 from django.shortcuts import render, get_object_or_404
 from .models import Сustomer, Product, Order
+
+logger = logging.getLogger(__name__)
 
 # НЕ ВЫВОДИТ ТОВАРЫ!!!
 # Продолжаем работать с товарами и заказами.
@@ -10,7 +13,7 @@ from .models import Сustomer, Product, Order
 # — за последние 30 дней (месяц)
 # — за последние 365 дней (год)
 # Товары в списке не должны повторятся.
-def customer_orders(request, customer_id, is_Present=None):
+def customer_orders(request, customer_id):
     today = date.today()
     seven_day_before = today - timedelta(days=7)
     # present_employees_all = is_Present.objects.filter(date__gte=seven_day_before, is_present=True)
@@ -21,7 +24,9 @@ def customer_orders(request, customer_id, is_Present=None):
     orders = Order.objects.filter(customer=customer).all()
     for order in orders:
         products.append(order.products.all())
+        logger.info(f' {order=}')
     products.reverse()
+
     # for x in range(len(products)):
     #     print(products[x])
     return render(request, 'myapp/customer_orders.html', {'customer': customer, 'orders': orders, 'products': products})
