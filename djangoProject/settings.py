@@ -54,7 +54,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -94,14 +94,14 @@ WSGI_APPLICATION = 'djangoProject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    #     'NAME': 'saglara$default',
-    #     'USER': 'saglara',
-    #     'PASSWORD': os.getenv('MYSQL_PASSWORD'),
-    #     'HOST': 'saglara.mysql.pythonanywhere-services.com',
-    #     'OPTIONS': {
-    #     'init_command': "SET NAMES 'utf8mb4';SET sql_mode='STRICT_TRANS_TABLES'", 'charset': 'utf8mb4',
-    # },
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': 'saglara$default',
+        'USER': 'saglara',
+        'PASSWORD': os.getenv('MYSQL_PASSWORD'),
+        'HOST': 'saglara.mysql.pythonanywhere-services.com',
+        'OPTIONS': {
+        'init_command': "SET NAMES 'utf8mb4';SET sql_mode='STRICT_TRANS_TABLES'", 'charset': 'utf8mb4',
+    },
     }
 }
 
