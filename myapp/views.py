@@ -18,6 +18,7 @@ logger = logging.getLogger(__name__)
 def index(request):
     return render(request, "myapp/index.html")
 
+
 def customer_orders(request, customer_id):
     today = date.today()
     seven_day_before = today - timedelta(days=7)
