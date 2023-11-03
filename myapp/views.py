@@ -1,6 +1,7 @@
 from datetime import date, timedelta
 import logging
 
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from .models import Сustomer, Product, Order
 
@@ -13,6 +14,10 @@ logger = logging.getLogger(__name__)
 # — за последние 30 дней (месяц)
 # — за последние 365 дней (год)
 # Товары в списке не должны повторятся.
+
+def index(request):
+    return render(request, "myapp/index.html")
+
 def customer_orders(request, customer_id):
     today = date.today()
     seven_day_before = today - timedelta(days=7)
